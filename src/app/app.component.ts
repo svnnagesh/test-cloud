@@ -18,13 +18,19 @@ export class AppComponent implements OnInit {
 
 
     this.aService.fetchProducts().subscribe(resp => {
+      console.log(resp)
       if(resp){
         Object.keys(resp).forEach(v => {
-          this.productsData.push(resp[v]);
+          let data = resp[v];
+          this.productsData.push(data);
         });
+        console.log(this.productsData)
       } else {
         alert('Unable to fetch data');
       }
+      
+    }, err=> {
+      console.log(err);
     });
   }
 
